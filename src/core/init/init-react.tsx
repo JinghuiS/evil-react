@@ -26,7 +26,6 @@ export function bootStartup(boot: BootStartupType) {
         const RootApp = boot.app;
         return (
             <RootApp>
-                {' '}
                 <RouterEl>
                     <RootRouterEle App={boot.app} />
                 </RouterEl>

@@ -1,4 +1,4 @@
-import { RouterModule } from '@/core/router/router.module';
+import { RouterModule } from 'react-module/router';
 import { Home } from './Home';
 export function HomeModule() {
     return RouterModule.forChild({

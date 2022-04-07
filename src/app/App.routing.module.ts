@@ -1,5 +1,5 @@
-import { IRoutes } from '@/core/router/router-config';
-import { RouterModule } from '@/core/router/router.module';
+import { IRoutes } from 'react-module/router';
+import { RouterModule } from 'react-module/router/';
 import { HashRouter } from 'react-router-dom';
 import { HomeModule } from './pages/home/Home.module';
 

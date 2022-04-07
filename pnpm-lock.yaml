@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@ngify/http': ^1.2.0
   '@types/react': ^17.0.33
   '@types/react-dom': ^17.0.10
   '@vitejs/plugin-react': ^1.0.7
@@ -20,6 +21,7 @@ specifiers:
   windicss: ^3.5.1
 
 dependencies:
+  '@ngify/http': 1.2.0
   '@wendellhu/redi': 0.5.0_react@17.0.2+rxjs@7.5.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -336,6 +338,19 @@ packages:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
+
+  /@ngify/http/1.2.0:
+    resolution: {integrity: sha512-N93ZhSMq41l2HccGP1fPQ5o61dqgJ+mgo/KJBqEUlc7wAT/wxsFHS/NKtgH9OG/UlhEwlFG5yBJZLuuBPUHcPQ==}
+    peerDependencies:
+      '@types/wechat-miniprogram': ^3.4.0
+    dependencies:
+      '@ngify/types': 1.2.0
+      rxjs: 7.5.5
+    dev: false
+
+  /@ngify/types/1.2.0:
+    resolution: {integrity: sha512-1rqKpQ05g1zZ9lfXxEOKWUT2z+vVudI7YAoR4h40BxKxpyEeajBSQn4uivauUwdII5evUlOO1s8I/AodnrsE2A==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

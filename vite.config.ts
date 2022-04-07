@@ -5,7 +5,13 @@ import WindiCSS from 'vite-plugin-windicss';
 // https://vitejs.dev/config/
 export default defineConfig({
     resolve: {
-        alias: [{ find: '@', replacement: '/src' }],
+        alias: [
+            { find: '@', replacement: '/src' },
+            {
+                find: 'react-module',
+                replacement: '/src/core',
+            },
+        ],
     },
 
     /**打包 */
