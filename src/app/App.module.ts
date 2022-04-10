@@ -1,12 +1,27 @@
+import { APP_INITIALIZER } from '@/core/init/init-token';
 import { HttpClientModule } from 'react-module/http';
 import { bootStartup } from 'react-module/init';
 import App from './App';
 import { AppRouterModule } from './App.routing.module';
 
 export function appBootStartup() {
-    bootStartup({
+    return bootStartup({
         app: App,
-        mount: 'root',
-        providers: [...AppRouterModule(), ...HttpClientModule.forRoot({})],
+        providers: [
+            ...AppRouterModule(),
+            ...HttpClientModule.forRoot({}),
+            [
+                APP_INITIALIZER,
+                {
+                    useValue: () => {
+                        return new Promise((resolve) => {
+                            setTimeout(() => {
+                                return resolve('app init');
+                            }, 1000);
+                        });
+                    },
+                },
+            ],
+        ],
     });
 }

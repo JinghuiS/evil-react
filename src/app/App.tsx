@@ -1,8 +1,13 @@
+import { RouterDiView } from '@/core/router';
 import React from 'react';
-import './App.css';
+import { HashRouter } from 'react-router-dom';
 
-const App: React.FC = ({ children }) => {
-    return <div>{children}</div>;
+const App: React.FC = () => {
+    return (
+        <HashRouter>
+            <RouterDiView />
+        </HashRouter>
+    );
 };
 
 export default App;

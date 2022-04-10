@@ -1,12 +1,11 @@
 import { useRoutes } from 'react-router-dom';
 import { RouterModuleForRoot } from '../router/router.module';
-import { useService } from '../utils/base-state-service/useService';
+import { useService } from '../services';
 
-const RootRouterEle = ({ App }: { App: any }) => {
+const RouterDiView = () => {
     const router = useService(RouterModuleForRoot);
-
     const element = useRoutes([...router.scan(router.routes)]);
     return element;
 };
 
-export { RootRouterEle };
+export { RouterDiView };

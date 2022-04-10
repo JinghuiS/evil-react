@@ -3,12 +3,8 @@ import { RouterChildModule, RouterChildModuleProps } from './router-child.module
 import { IRoutes, RouterConfig, RouterConfigType } from './router-config';
 
 export class RouterModuleForRoot {
-    path: string = '/';
     routes: IRoutes[] = [];
     constructor(@Inject(RouterConfig) private readonly routerConfig: RouterConfigType) {
-        if (this.routerConfig.path) {
-            this.path = this.routerConfig.path;
-        }
         this.routes = this.routerConfig.router;
     }
 

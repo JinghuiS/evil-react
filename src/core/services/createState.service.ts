@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
 
-export class BaseStateService {
+export class createStateService {
     private updated$ = new BehaviorSubject<void>(undefined);
 
     updateNext() {

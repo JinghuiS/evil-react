@@ -1,46 +1,34 @@
 import React from 'react';
-
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter } from 'react-router-dom';
-import { connectDependencies, connectInjector, useInjector } from '@wendellhu/redi/react-bindings';
-import { Dependency, Injector } from '@wendellhu/redi';
-import { RootRouterEle } from './RootRouterEle';
-import { RouterConfig } from '../router/router-config';
-type RouterEl = typeof HashRouter | typeof BrowserRouter;
+import { connectInjector } from '@wendellhu/redi/react-bindings';
+import { Dependency, Injector, Optional } from '@wendellhu/redi';
+import { APP_INITIALIZER } from './init-token';
 
 interface BootStartupType {
     /**根组件 */
     app: any;
-
-    /**挂载点 */
-    mount?: string;
     /**提供注入 */
     providers: Dependency<any>[];
 }
 
 /**启动react */
-export function bootStartup(boot: BootStartupType) {
-    const App = () => {
-        const injector = useInjector();
-        const RouterEl = injector.get(RouterConfig).routerEl;
-        const RootApp = boot.app;
-        return (
-            <RootApp>
-                <RouterEl>
-                    <RootRouterEle App={boot.app} />
-                </RouterEl>
-            </RootApp>
-        );
+export async function bootStartup(boot: BootStartupType) {
+    const providers: Dependency<any>[] = [[APP_INITIALIZER, { useValue: async () => {} }]];
+
+    const inject = new Injector(providers);
+    const childInject = inject.createChild(boot.providers);
+    const AppView = boot.app;
+    const App: React.FC = () => {
+        return <AppView />;
     };
 
-    const Root = connectDependencies(App, boot.providers);
-
-    const mount = boot.mount || 'root';
-
-    ReactDOM.render(
-        <React.StrictMode>
-            <Root />
-        </React.StrictMode>,
-        document.getElementById(mount),
-    );
+    const appInit = childInject.get(APP_INITIALIZER);
+    await appInit()
+        .then((res) => {
+            console.log('initialization success');
+        })
+        .catch((err) => {
+            console.log('initialization failed');
+        });
+    const Root = connectInjector(App, childInject);
+    return Root;
 }

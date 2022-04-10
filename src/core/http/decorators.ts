@@ -1,5 +1,5 @@
 import { Inject } from '@wendellhu/redi';
-import { BaseStateService } from '../utils/base-state-service/base-state.service';
+import { createStateService } from '../services';
 import { HttpClient } from './client';
 
 const paramKey = `__api_params`;
@@ -11,11 +11,11 @@ function setParam(target: any, key: string = paramKey): any {
     return params;
 }
 
-export abstract class BaseApi<T = any> extends BaseStateService {
+export abstract class BaseApi<T = any> extends createStateService {
     path = '';
     basePath = '';
 
-    constructor(@Inject(HttpClient) _http: HttpClient) {
+    constructor(@Inject(HttpClient) public _http: HttpClient) {
         super();
         const baseData = setParam(this);
         this.path = baseData.baseUrl;

@@ -12,13 +12,6 @@ export interface IRoutes extends RouteObject {
 
 export type RouterConfigType = {
     router: IRoutes[];
-    /**路由组件
-     * @default HashRouter hash路由
-     * @default BrowserRouter history路由
-     */
-    routerEl: RouterEl;
-    /**路由根路径 */
-    path?: string;
 };
 
 export const RouterConfig = createIdentifier<RouterConfigType>('router-config');
