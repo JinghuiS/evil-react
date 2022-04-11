@@ -1,5 +1,4 @@
-import { IRoutes } from 'react-module/router';
-import { RouterModule } from 'react-module/router/';
+import { IRoutes, RouterModule } from 'react-module/router';
 import { HomeModule } from './pages/home/Home.module';
 
 const routes: IRoutes[] = [

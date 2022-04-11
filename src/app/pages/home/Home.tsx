@@ -1,3 +1,3 @@
 export function Home() {
-    return <div className="bg-dark-50">121212</div>;
+    return <div>1</div>;
 }

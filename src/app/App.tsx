@@ -1,4 +1,4 @@
-import { RouterDiView } from '@/core/router';
+import { RouterDiView } from 'react-module/router';
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 
